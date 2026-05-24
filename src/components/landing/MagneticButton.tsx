@@ -1,12 +1,14 @@
-import { useRef, useState, type ButtonHTMLAttributes, type ReactNode } from "react";
+import { useRef, useState, type ReactNode } from "react";
 
-type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
+type Props = {
   children: ReactNode;
-  as?: "button" | "a";
+  className?: string;
   href?: string;
+  onClick?: () => void;
+  ariaLabel?: string;
 };
 
-export function MagneticButton({ children, className = "", href, ...rest }: Props) {
+export function MagneticButton({ children, className = "", href, onClick, ariaLabel }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const [t, setT] = useState({ x: 0, y: 0 });
 
@@ -33,6 +35,6 @@ export function MagneticButton({ children, className = "", href, ...rest }: Prop
     </span>
   );
 
-  if (href) return <a href={href} {...(rest as never)}>{inner}</a>;
-  return <button {...rest}>{inner}</button>;
+  if (href) return <a href={href} aria-label={ariaLabel} onClick={onClick}>{inner}</a>;
+  return <button type="button" aria-label={ariaLabel} onClick={onClick}>{inner}</button>;
 }
