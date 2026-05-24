@@ -59,29 +59,42 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-emerald-glow: var(--emerald-glow);
+  --color-cobalt-glow: var(--cobalt-glow);
+  --color-obsidian: var(--obsidian);
+  --color-charcoal: var(--charcoal);
+  --font-display: "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --radius: 0.875rem;
+  /* Industrial sleek dark theme */
+  --obsidian: oklch(0.16 0.02 265);   /* #0B0F19-ish */
+  --charcoal: oklch(0.22 0.02 265);   /* #111827-ish */
+  --emerald-glow: oklch(0.74 0.18 162); /* #10B981 */
+  --cobalt-glow: oklch(0.58 0.22 264);  /* #2563EB */
+
+  --background: oklch(0.16 0.02 265);
+  --foreground: oklch(0.97 0.005 250);
+  --card: oklch(0.22 0.02 265 / 60%);
+  --card-foreground: oklch(0.97 0.005 250);
+  --popover: oklch(0.18 0.02 265);
+  --popover-foreground: oklch(0.97 0.005 250);
+  --primary: oklch(0.74 0.18 162);
+  --primary-foreground: oklch(0.16 0.02 265);
+  --secondary: oklch(0.58 0.22 264);
+  --secondary-foreground: oklch(0.98 0.005 250);
+  --muted: oklch(0.28 0.02 265);
+  --muted-foreground: oklch(0.72 0.02 260);
+  --accent: oklch(0.58 0.22 264);
+  --accent-foreground: oklch(0.98 0.005 250);
+  --destructive: oklch(0.65 0.22 27);
+  --destructive-foreground: oklch(0.98 0.005 250);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.74 0.18 162 / 60%);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -140,5 +153,87 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+    background-image:
+      radial-gradient(1200px 600px at 80% -10%, color-mix(in oklab, var(--cobalt-glow) 18%, transparent), transparent 60%),
+      radial-gradient(900px 500px at -10% 20%, color-mix(in oklab, var(--emerald-glow) 14%, transparent), transparent 60%),
+      radial-gradient(800px 600px at 50% 110%, color-mix(in oklab, var(--cobalt-glow) 10%, transparent), transparent 60%);
+    background-attachment: fixed;
+  }
+
+  html { scroll-behavior: smooth; }
+}
+
+@layer utilities {
+  .font-display { font-family: var(--font-display); letter-spacing: -0.02em; }
+  .font-mono { font-family: var(--font-mono); }
+
+  .glass {
+    background: linear-gradient(180deg, color-mix(in oklab, white 6%, transparent), color-mix(in oklab, white 2%, transparent));
+    border: 1px solid color-mix(in oklab, white 10%, transparent);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+  }
+  .glass-strong {
+    background: linear-gradient(180deg, color-mix(in oklab, white 9%, transparent), color-mix(in oklab, white 3%, transparent));
+    border: 1px solid color-mix(in oklab, white 14%, transparent);
+    backdrop-filter: blur(18px) saturate(160%);
+  }
+
+  .glow-emerald { box-shadow: 0 0 0 1px color-mix(in oklab, var(--emerald-glow) 35%, transparent), 0 10px 40px -10px color-mix(in oklab, var(--emerald-glow) 55%, transparent); }
+  .glow-cobalt  { box-shadow: 0 0 0 1px color-mix(in oklab, var(--cobalt-glow) 35%, transparent), 0 10px 40px -10px color-mix(in oklab, var(--cobalt-glow) 55%, transparent); }
+
+  .text-gradient-emerald {
+    background: linear-gradient(135deg, oklch(0.95 0.05 162), var(--emerald-glow));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .text-gradient-cobalt {
+    background: linear-gradient(135deg, oklch(0.9 0.08 264), var(--cobalt-glow));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .text-gradient-hero {
+    background: linear-gradient(120deg, oklch(0.98 0.01 250) 0%, oklch(0.88 0.06 200) 40%, oklch(0.74 0.18 162) 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(color-mix(in oklab, white 4%, transparent) 1px, transparent 1px),
+      linear-gradient(90deg, color-mix(in oklab, white 4%, transparent) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+  }
+
+  @keyframes flowDot {
+    0%   { offset-distance: 0%;   opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 1; }
+    100% { offset-distance: 100%; opacity: 0; }
+  }
+  @keyframes pulseGlow {
+    0%,100% { filter: drop-shadow(0 0 6px color-mix(in oklab, var(--emerald-glow) 60%, transparent)); }
+    50%     { filter: drop-shadow(0 0 18px color-mix(in oklab, var(--emerald-glow) 90%, transparent)); }
+  }
+  .animate-pulse-glow { animation: pulseGlow 2.4s ease-in-out infinite; }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .animate-marquee { animation: marquee 28s linear infinite; }
+
+  @keyframes floaty {
+    0%,100% { transform: translateY(0) }
+    50%     { transform: translateY(-8px) }
+  }
+  .animate-floaty { animation: floaty 6s ease-in-out infinite; }
+
+  @keyframes typing {
+    from { width: 0 }
+    to   { width: 100% }
+  }
+  .animate-typing {
+    display: inline-block; overflow: hidden; white-space: nowrap;
+    animation: typing 2.4s steps(36, end) 0.4s both;
   }
 }
