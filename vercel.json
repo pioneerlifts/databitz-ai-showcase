@@ -1,5 +1,13 @@
 {
   "version": 2,
-  "framework": "vite",
-  "regions": ["iad1"]
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "dist/server" }
+    }
+  ],
+  "routes": [
+    { "src": "/[^.]+", "dest": "/index.js" }
+  ]
 }
