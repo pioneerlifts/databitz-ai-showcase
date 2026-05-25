@@ -75,11 +75,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Databitz AI — Automate Your Growth | Business Automation Agency, Delhi" },
       { name: "description", content: "Databitz AI turns Google Workspace, Microsoft Power Platform & WhatsApp into automated, revenue-driving systems for Indian SMBs. Book a 15-minute audit." },
       { name: "author", content: "Databitz AI" },
-      { property: "og:title", content: "Databitz AI — Stop Fighting Chaos. Start Automating Growth." },
-      { property: "og:description", content: "Elite business process automation for Indian SMBs — Google Workspace, Microsoft 365, WhatsApp API & custom apps." },
+      { property: "og:title", content: "Databitz AI — Automate Your Growth | Business Automation Agency, Delhi" },
+      { property: "og:description", content: "Databitz AI turns Google Workspace, Microsoft Power Platform & WhatsApp into automated, revenue-driving systems for Indian SMBs. Book a 15-minute audit." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Databitz AI — Automate Your Growth | Business Automation Agency, Delhi" },
+      { name: "twitter:description", content: "Databitz AI turns Google Workspace, Microsoft Power Platform & WhatsApp into automated, revenue-driving systems for Indian SMBs. Book a 15-minute audit." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/08d7ad63-6674-4060-9a6a-521ea734794d/id-preview-753602b3--5e77637e-b096-48f9-929b-941df0d2b073.lovable.app-1779625582321.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/08d7ad63-6674-4060-9a6a-521ea734794d/id-preview-753602b3--5e77637e-b096-48f9-929b-941df0d2b073.lovable.app-1779625582321.png" },
     ],
     links: [
       {
